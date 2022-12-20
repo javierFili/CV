@@ -17,8 +17,7 @@ export default function VistaPrincipalUs() {
     console.log(datos1[0].tareas);
     const datosSoloTares = datos1[0].tareas;
     listDatos = datosSoloTares.map((d) => {
-      <CardsTareas
-        key="1"
+      <CardsTareas        
         tituloDeTarea={d.titulo}
         descripcionTarea={d.descripcion}
         fechaInicioTarea={d.fechaIni}
