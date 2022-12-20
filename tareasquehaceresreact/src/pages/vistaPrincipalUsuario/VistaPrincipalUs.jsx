@@ -10,19 +10,22 @@ export default function VistaPrincipalUs() {
     axios.get(URL).then((response) => {
       setDatos(response.data);
     });
-  }, []);
+  });
   let listDatos;
   if (datos !== null) {
     const datos1 = datos.filter((datos) => datos._id === "javier2");
     console.log(datos1[0].tareas);
     const datosSoloTares = datos1[0].tareas;
-    listDatos = datosSoloTares.map((d) => {
-      <CardsTareas        
-        tituloDeTarea={d.titulo}
-        descripcionTarea={d.descripcion}
-        fechaInicioTarea={d.fechaIni}
-        fechaFinalTarea={d.fechaFinal}
-      />;
+    listDatos = datosSoloTares.map(function (d) {
+      return (
+        <CardsTareas
+          key="1"
+          tituloDeTarea={d.titulo}
+          descripcionTarea={d.descripcion}
+          fechaInicioTarea={d.fechaIni}
+          fechaFinalTarea={d.fechaFinal}
+        />
+      );
     });
     console.log(listDatos);
   }
