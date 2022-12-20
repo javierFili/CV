@@ -1,18 +1,19 @@
 import './App.css';
-import Cards from './components/Cards';
-import NavBar from './components/NavBar';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import VistaPrincipalUs from './pages/vistaPrincipalUsuario/VistaPrincipalUs'
+import VistaInicial from './pages/vistaInicial/VistaInicial'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <NavBar/>
-        <Cards/>        
-        
-        <Cards />
+      <Router>
+				<Routes>
+					<Route path='/vistaPrincipal' element={<VistaPrincipalUs />} />		
+          <Route path='/*' element={<VistaInicial/>} />
+				</Routes>
+			</Router>
       </header>
     </div>
   );
