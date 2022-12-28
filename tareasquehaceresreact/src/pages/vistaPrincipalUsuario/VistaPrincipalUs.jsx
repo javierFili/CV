@@ -16,26 +16,27 @@ export default function VistaPrincipalUs() {
     const datos1 = datos.filter((datos) => datos._id === "javier2");
     console.log(datos1[0].tareas);
     const datosSoloTares = datos1[0].tareas;
-    listDatos = datosSoloTares.map(function (d) {
-      return (
-        <CardsTareas
-          key="1"
-          tituloDeTarea={d.titulo}
-          descripcionTarea={d.descripcion}
-          fechaInicioTarea={d.fechaIni}
-          fechaFinalTarea={d.fechaFinal}
-        />
-      );
-    });
-    console.log(listDatos);
+    listDatos = datosSoloTares.map((d) => (
+      <CardsTareas
+        id={d._id}
+        tituloDeTarea={d.titulo}
+        descripcionTarea={d.descripcion}
+        fechaInicioTarea={d.fechaIni}
+        fechaFinalTarea={d.fechaFinal}
+      />
+    ));    
+    return (
+      <div>
+        <NavBar />
+        La vista princial estara aqui
+        {listDatos}
+      </div>
+    );
   }
-
   return (
     <div>
       <NavBar />
-      La vista princial estara aqui
-      <CardsTareas />
-      {listDatos}
+      La vista princial estara aqui      
     </div>
   );
 }

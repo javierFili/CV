@@ -1,11 +1,12 @@
-export default function CardsTareas(
+export default function CardsTareas({
+  idTarea,
   tituloDeTarea,
   descripcionTarea,
   fechaInicioTarea,
-  fechaFinalTarea
-) {
+  fechaFinalTarea,
+}) {
   return (
-    <div className="col-sm-12 col-md-6	col-lg-4	col-xl-3	col-xxl-3" id="javie20">
+    <div className="col-sm-12 col-md-6	col-lg-4	col-xl-3	col-xxl-3" id={idTarea}>
       <div className="card text-center" id="">
         <div className="card-header numTarea">Tarea#1</div>
         <div className="card-body cuerpoTarea" id="">
