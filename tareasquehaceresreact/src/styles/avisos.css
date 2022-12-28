@@ -1,0 +1,9 @@
+.centerPage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avisoColor{
+  color: rgb(72, 177, 81);
+}

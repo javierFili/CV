@@ -1,2 +1,1 @@
-1: Integrar API REST con react 
-2:
+1: Arreglar ese useEffect, no para de hacer consultas ala api.

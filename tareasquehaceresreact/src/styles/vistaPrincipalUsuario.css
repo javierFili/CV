@@ -1,0 +1,20 @@
+.principalCard{
+  max-height: 32em;
+}
+.numTarea {
+  background-color: #d9f8c4;
+}
+
+.cuerpoTarea {
+  background-color: #fad9a1;
+  max-height: 18px;
+  min-height: 18em;
+  overflow-y: auto;
+}
+.footerCard {
+  background-color: #fad9bb;
+}
+
+.pieTarea {
+  background-color: #f37878;
+}

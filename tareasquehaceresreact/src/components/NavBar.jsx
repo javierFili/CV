@@ -6,9 +6,8 @@ export default function NavBar() {
   if (id === null) {
     return (
       <div className="main">
-        <div className="row justify-content-md-center">
-          <div className="col-3">
-            <AiFillShopping />
+        <div className="row navbar ">
+          <div className="col-3">            
             <button className="btn btn-primary ">Crear tarea </button>
           </div>
           <div className="col-6">
@@ -25,7 +24,7 @@ export default function NavBar() {
   } else {
     return (
       <div className="main">
-        <div className="row justify-content-md-center">
+        <div className="row navbar ">
           <div className="col-3">
             <AiFillShopping />
             <button className="btn btn-primary ">Crear tarea </button>

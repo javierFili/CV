@@ -8,24 +8,6 @@
   background-color: #b2df95;
 }
 
-#cuerpo {
-  height: inherit;
-}
-
-.numTarea {
-  background-color: #d9f8c4;
-}
-
-.cuerpoTarea {
-  background-color: #fad9a1;
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-.pieTarea {
-  background-color: #f37878;
-}
-
 .boton {
   background-color: #abc797;
   color: black;
@@ -33,10 +15,9 @@
   margin-top: 2%;
 }
 
-.footerCard {
-  background-color: #fad9a1;
-}
-
 .center {
-  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
