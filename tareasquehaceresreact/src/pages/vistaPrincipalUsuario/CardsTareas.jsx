@@ -1,4 +1,4 @@
-import '../../styles/vistaPrincipalUsuario.css'
+import "../../styles/vistaPrincipalUsuario.css";
 
 export default function CardsTareas({
   idTarea,

@@ -1,3 +1,8 @@
 .navbar{
   background-color: aquamarine;
 }
+.centrarElementosNavbar{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
