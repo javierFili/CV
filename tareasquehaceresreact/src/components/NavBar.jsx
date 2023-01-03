@@ -1,12 +1,11 @@
 import "../styles/navbar.css";
+import CrearTareaNueva from "../components/CrearTareaNueva";
+import ModificarTarea from "../components/ModificarTarea";
 
 import { AiFillShopping } from "react-icons/ai";
 
 export default function NavBar() {
   let id = localStorage.getItem("usId");
-  function crearTareaNueva() {
-    alert("se creara una tarea nueva");
-  }
   function salirDeLaSesion() {
     alert("se salbra de la sesion");
   }
@@ -16,9 +15,7 @@ export default function NavBar() {
       <div className="main">
         <div className="row navbar centrarElementosNavbar ">
           <div className="col-2">
-            <button className="btn-15" onClick={crearTareaNueva}>
-              <span>Crear tarea</span>
-            </button>
+            <CrearTareaNueva />
           </div>
           <div className="col-8">
             <h1 className="centrarElementosNavbar ">
@@ -30,6 +27,9 @@ export default function NavBar() {
               <span>salir</span>
             </button>
           </div>
+        </div>
+        <div>
+          <ModificarTarea></ModificarTarea>
         </div>
       </div>
     );

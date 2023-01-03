@@ -31,16 +31,14 @@
   box-sizing: border-box;
 }
 .btn-15 {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: button;
+  -webkit-tap-highlight-color: transparent;  
   background-color: white;
   background-image: none;
   color: #fff;
   cursor: pointer;
   font-weight: 900;
   line-height: 1.5;
-  margin: 0;
-  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  margin: 0;  
   padding: 0;
   text-transform: uppercase;
 }
