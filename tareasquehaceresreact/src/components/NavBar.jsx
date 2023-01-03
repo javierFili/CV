@@ -1,4 +1,5 @@
 import "../styles/navbar.css";
+
 import { AiFillShopping } from "react-icons/ai";
 
 export default function NavBar() {
@@ -15,18 +16,18 @@ export default function NavBar() {
       <div className="main">
         <div className="row navbar centrarElementosNavbar ">
           <div className="col-2">
-            <button className="btn btn-primary " onClick={crearTareaNueva}>
-              Crear tarea{" "}
+            <button className="btn-15" onClick={crearTareaNueva}>
+              <span>Crear tarea</span>
             </button>
           </div>
-          <div className="col-6">
-            <h1>
-              <b>TAREAS Y QUE HACERES</b>
+          <div className="col-8">
+            <h1 className="centrarElementosNavbar ">
+              <b> TAREAS Y QUE HACERES</b>
             </h1>
           </div>
-          <div className="col-2">
-            <button className="btn btn-primary" onClick={salirDeLaSesion}>
-              salir
+          <div className="col-1">
+            <button className="btn-15" onClick={salirDeLaSesion}>
+              <span>salir</span>
             </button>
           </div>
         </div>

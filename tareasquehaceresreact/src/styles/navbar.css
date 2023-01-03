@@ -1,7 +1,8 @@
-.navbar{
-  background-color: aquamarine;
+.navbar {
+  background-color: black;
+  color: white;
 }
-.centrarElementosNavbar{  
+.centrarElementosNavbar {
   display: flex;
   justify-content: center;
   align-items: center;
