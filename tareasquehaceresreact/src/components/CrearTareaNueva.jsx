@@ -3,7 +3,19 @@ import Modal from "react-bootstrap/Modal";
 
 export default function CrearTareaNueva() {
   const [show, setShow] = useState(false);
+  const [nuevaTarea, setNuevaTarea] = useState({
+    tituloNombre: "",
+    descripcion: "",
+    fechaInicio: "",
+    fechaFin: "",
+  });
 
+  function envioDeFormulario() {}
+
+  function entradaCambio(e) {
+    e.persist();
+    setNuevaTarea({ ...nuevaTarea, [e.target.name]: e.target.value });
+  }
   return (
     <>
       <button className="btn-15" onClick={() => setShow(true)}>
@@ -23,13 +35,18 @@ export default function CrearTareaNueva() {
         </Modal.Header>
         <Modal.Body>
           <div class="container-fluid">
-            <form>
+            <form onSubmit={envioDeFormulario}>
               <div class="mb-3 row">
                 <label for="usuario" class="col-sm-3 col-form-label">
                   Titulo de la tarea:
                 </label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="tituloNombre" />
+                  <input
+                    onChange={entradaCambio}
+                    type="text"
+                    class="form-control"
+                    name="tituloNombre"
+                  />
                 </div>
               </div>
               <div class="mb-3 row">
@@ -37,7 +54,11 @@ export default function CrearTareaNueva() {
                   Descripcion:
                 </label>
                 <div class="col-sm-9">
-                  <textarea id="descripcion" class="form-control"></textarea>
+                  <textarea
+                    onChange={entradaCambio}
+                    name="descripcion"
+                    class="form-control"
+                  ></textarea>
                 </div>
               </div>
               <div class="mb-3 row">
@@ -45,7 +66,12 @@ export default function CrearTareaNueva() {
                   Fecha de inicio:
                 </label>
                 <div class="col-sm-9">
-                  <input id="fechaInicio" type="date" class="form-control" />
+                  <input
+                    onChange={entradaCambio}
+                    name="fechaInicio"
+                    type="date"
+                    class="form-control"
+                  />
                 </div>
               </div>
               <div class="mb-3 row">
@@ -53,17 +79,18 @@ export default function CrearTareaNueva() {
                   Fecha de fin
                 </label>
                 <div class="col-sm-9">
-                  <input id="fechaFin" type="date" class="form-control" />
+                  <input
+                    onChange={entradaCambio}
+                    name="fechaFin"
+                    type="date"
+                    class="form-control"
+                  />
                 </div>
               </div>
 
               <div class="mb-3 row">
                 <div class="offset-sm-3 col-sm-9">
-                  <div
-                    onclick="crearObtenerDatos()"
-                    type="submit"
-                    class="btn btn-primary"
-                  >
+                  <div type="submit" class="btn btn-primary">
                     Confirmar
                   </div>
                   <button
