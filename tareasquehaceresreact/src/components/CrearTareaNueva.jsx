@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 
 export default function CrearTareaNueva() {
@@ -10,7 +11,20 @@ export default function CrearTareaNueva() {
     fechaFin: "",
   });
 
-  function envioDeFormulario() {}
+  function envioDeFormulario() {
+    // aqui rescatamos el id.
+    const URL = "http://localhost:3001/tareas/javier2";
+    axios
+      .post(URL, {
+        nuevaTarea,
+      })
+      .then((error) => {
+        //sale el pop up de registro exitoso.
+      })
+      .catch((error) => {
+        console.log("algun error cometido");
+      });
+  }
 
   function entradaCambio(e) {
     e.persist();
