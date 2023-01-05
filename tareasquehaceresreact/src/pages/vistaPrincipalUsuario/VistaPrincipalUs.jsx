@@ -37,14 +37,14 @@ export default function VistaPrincipalUs() {
         />
       ));
       return (
-        <div>
+        <div className="">
           <NavBar datosDeTareas={datos1} />
-          <div className="center row">{listDatos}</div>
+          <div className=" main center row">{listDatos}</div>
         </div>
       );
     } else {
       return (
-        <div>
+        <div className="main">
           <NavBar />
           <Avisos aviso="No tiene tareas pendientes"></Avisos>
         </div>

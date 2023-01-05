@@ -1,6 +1,5 @@
 import "../styles/navbar.css";
 import CrearTareaNueva from "../components/CrearTareaNueva";
-import ModificarTarea from "../components/ModificarTarea";
 
 import { AiFillShopping } from "react-icons/ai";
 
@@ -28,8 +27,7 @@ export default function NavBar({ datosDeTareas }) {
             </button>
           </div>
         </div>
-        <div>
-          <ModificarTarea></ModificarTarea>
+        <div>          
         </div>
       </div>
     );

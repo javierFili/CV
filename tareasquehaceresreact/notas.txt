@@ -2,5 +2,6 @@ Cosas de la API de
   
 
 Cosas del frontend
-
+  1:Validar formularios.
+  2:Cambiar colores a los cards.
   

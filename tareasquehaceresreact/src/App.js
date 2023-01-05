@@ -7,7 +7,7 @@ import VistaInicial from './pages/vistaInicial/VistaInicial'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="">
       <Router>
 				<Routes>
 					<Route path='/vistaPrincipal' element={<VistaPrincipalUs />} />		

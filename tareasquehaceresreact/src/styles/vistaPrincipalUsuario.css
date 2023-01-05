@@ -2,7 +2,7 @@
   max-height: 32em;
 }
 .numTarea {
-  background-color: #818e78;  
+  background-color: #818e78;
 }
 
 .cuerpoTarea {
@@ -12,9 +12,14 @@
   overflow-y: auto;
 }
 .footerCard {
-  background-color: #fad9bb;
+  background-color: #fad9a1;
 }
 
 .pieTarea {
-  background-color: #f37878;
+  background-color: #444444;
 }
+
+.cardPrincipal {
+  padding: 1.5em;
+}
+
