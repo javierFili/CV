@@ -106,14 +106,13 @@ export default function CrearTareaNueva({ datosDeTareas }) {
 
               <div class="mb-3 row">
                 <div class="offset-sm-3 col-sm-9">
-                  <button type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-primary boton">
                     Confirmar
                   </button>
                   <button
                     onclick=""
                     type="button"
-                    class="btn btn-primary"
-                    data-bs-dismiss="modal"
+                    class="btn btn-primary boton"
                   >
                     Cancelar
                   </button>

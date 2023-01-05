@@ -1,4 +1,5 @@
 import "../../styles/vistaPrincipalUsuario.css";
+import ModificarTarea from "../../components/ModificarTarea";
 
 export default function CardsTareas({
   idTarea,
@@ -22,17 +23,15 @@ export default function CardsTareas({
           </div>
         </div>
         <div className="card-footer pieTarea" id="">
-          <button className="btn btn-success boton" id="">
-            Borrar
-          </button>
           <button
             className="btn btn-success boton"
             id=""
             data-bs-toggle="modal"
             data-bs-target="#dialogo1"
           >
-            Modificar
+            Borrar
           </button>
+          <ModificarTarea />
           <button className="btn btn-success boton" id="">
             Terminar
           </button>
