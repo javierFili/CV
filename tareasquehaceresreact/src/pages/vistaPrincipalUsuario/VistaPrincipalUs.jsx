@@ -38,7 +38,7 @@ export default function VistaPrincipalUs() {
       ));
       return (
         <div>
-          <NavBar />
+          <NavBar datosDeTareas={datos1} />
           <div className="center row">{listDatos}</div>
         </div>
       );

@@ -4,7 +4,7 @@ import ModificarTarea from "../components/ModificarTarea";
 
 import { AiFillShopping } from "react-icons/ai";
 
-export default function NavBar() {
+export default function NavBar({ datosDeTareas }) {
   let id = localStorage.getItem("usId");
   function salirDeLaSesion() {
     alert("se salbra de la sesion");
@@ -15,7 +15,7 @@ export default function NavBar() {
       <div className="main">
         <div className="row navbar centrarElementosNavbar ">
           <div className="col-2">
-            <CrearTareaNueva />
+            <CrearTareaNueva datosDeTareas={datosDeTareas} />
           </div>
           <div className="col-8">
             <h1 className="centrarElementosNavbar ">

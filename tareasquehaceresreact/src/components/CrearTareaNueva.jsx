@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 
-export default function CrearTareaNueva() {
+export default function CrearTareaNueva({ datosDeTareas }) {
   const [show, setShow] = useState(false);
   const [nuevaTarea, setNuevaTarea] = useState({
     titulo: "",
@@ -15,23 +14,23 @@ export default function CrearTareaNueva() {
     e.preventDefault();
     // aqui rescatamos el id.
     const URL = "http://localhost:3001/tareas/javier2";
-    console.log(nuevaTarea);
-    axios
-      .put(URL, {
-        nuevaTarea,
-      })
-      .then((error) => {
-        //sale el pop up de registro exitoso.
-        console.log(error.data);
-      })
-      .catch((error) => {
-        console.log("algun error cometido" + error.data);
-      });
+    var nuevaActualizacion = datosDeTareas[0].tareas;
+    nuevaActualizacion.push(nuevaTarea);
+    var sera = datosDeTareas[0];
+    console.log(sera);
+    let req = new Request(URL, {
+      method: "PUT",
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify(sera),
+    });
+    fetch(req).then((res) => res.json());
   }
 
   function entradaCambio(e) {
     e.persist();
-    setNuevaTarea({ ...nuevaTarea, [e.target.name]: e.target.value });    
+    setNuevaTarea({ ...nuevaTarea, [e.target.name]: e.target.value });
   }
   return (
     <>
