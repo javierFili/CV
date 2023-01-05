@@ -5,30 +5,33 @@ import Modal from "react-bootstrap/Modal";
 export default function CrearTareaNueva() {
   const [show, setShow] = useState(false);
   const [nuevaTarea, setNuevaTarea] = useState({
-    tituloNombre: "",
+    titulo: "",
     descripcion: "",
-    fechaInicio: "",
+    fechaIni: "",
     fechaFin: "",
   });
 
-  function envioDeFormulario() {
+  function envioDeFormulario(e) {
+    e.preventDefault();
     // aqui rescatamos el id.
     const URL = "http://localhost:3001/tareas/javier2";
+    console.log(nuevaTarea);
     axios
-      .post(URL, {
+      .put(URL, {
         nuevaTarea,
       })
       .then((error) => {
         //sale el pop up de registro exitoso.
+        console.log(error.data);
       })
       .catch((error) => {
-        console.log("algun error cometido");
+        console.log("algun error cometido" + error.data);
       });
   }
 
   function entradaCambio(e) {
     e.persist();
-    setNuevaTarea({ ...nuevaTarea, [e.target.name]: e.target.value });
+    setNuevaTarea({ ...nuevaTarea, [e.target.name]: e.target.value });    
   }
   return (
     <>
@@ -59,7 +62,7 @@ export default function CrearTareaNueva() {
                     onChange={entradaCambio}
                     type="text"
                     class="form-control"
-                    name="tituloNombre"
+                    name="titulo"
                   />
                 </div>
               </div>
@@ -82,7 +85,7 @@ export default function CrearTareaNueva() {
                 <div class="col-sm-9">
                   <input
                     onChange={entradaCambio}
-                    name="fechaInicio"
+                    name="fechaIni"
                     type="date"
                     class="form-control"
                   />
@@ -104,9 +107,9 @@ export default function CrearTareaNueva() {
 
               <div class="mb-3 row">
                 <div class="offset-sm-3 col-sm-9">
-                  <div type="submit" class="btn btn-primary">
+                  <button type="submit" class="btn btn-primary">
                     Confirmar
-                  </div>
+                  </button>
                   <button
                     onclick=""
                     type="button"

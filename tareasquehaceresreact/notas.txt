@@ -1,9 +1,6 @@
-Poner interacion a los siguientes botones:
-  1:Crear tarea =>
-  2:Salir      =>
-  3:Borrar     =>
-  4:Modificar  =>
-  5:Terminar   =>
+Cosas de la API de
+  
 
+Cosas del frontend
 
-Arreglar el navBar esta muy feo XD
+  
