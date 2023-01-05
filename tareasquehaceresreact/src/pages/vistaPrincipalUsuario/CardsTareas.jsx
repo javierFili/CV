@@ -10,7 +10,7 @@ export default function CardsTareas({
   return (
     <div className="col-sm-12 col-md-6	col-lg-4	col-xl-3	col-xxl-3" id={idTarea}>
       <div className="card text-center" id="">
-        <div className="card-header numTarea">Tarea#1</div>
+        <div className="card-header numTarea">Tarea</div>
         <div className="card-body cuerpoTarea" id="">
           <h4 className="card-title">{tituloDeTarea}</h4>
           <p className="card-text">{descripcionTarea}</p>
