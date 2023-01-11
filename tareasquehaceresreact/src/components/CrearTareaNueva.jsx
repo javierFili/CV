@@ -106,7 +106,7 @@ export default function CrearTareaNueva({ datosDeTareas }) {
 
               <div class="mb-3 row">
                 <div class="offset-sm-3 col-sm-9">
-                  <button type="submit" class="btn btn-primary boton">
+                  <button    class="btn btn-primary boton">
                     Confirmar
                   </button>
                   <button
