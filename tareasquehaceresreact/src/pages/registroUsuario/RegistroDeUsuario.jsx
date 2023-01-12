@@ -18,10 +18,51 @@ export default function RegistroDeUsuario() {
     contrasenia: "",
     contrasenia1: "",
   });
+  const [nombreEr, setNombreEr] = useState("");
+  const [correoEr, setCorreoEr] = useState("");
+  const [contraseniaEr, setContraseniaEr] = useState("");
+  const [contrasenia1Er, setContrasenia1Er] = useState("");
+
+  function validarNombre(nombre) {
+    nombre = nombre.trim();
+    if (nombre === "") {
+      setNombreEr("No puede ser vacio!");
+      return false;
+    }
+  }
+
+  function validarCorreo(correo) {
+    correo = correo.trim();
+    if (correo.length === 0) {
+      setCorreoEr("No puede ser vacio!");
+      return false;
+    }
+  }
+  function validarContrasenia(contrasenia, contrasenia1) {
+    contrasenia = contrasenia.trim();
+    contrasenia1 = contrasenia1.trim();
+    if (contrasenia.length === 0) {
+      setContraseniaEr("No puede ser vacia!");
+      return false;
+    }
+    if (contrasenia1 === 0) {
+      setContrasenia1Er("No puede ser vacia");
+      return false;
+    }
+    if (contrasenia.length > 7) {
+      setContraseniaEr("debe tener almenos 8 caracteres.");
+      return false;
+    }
+  }
 
   function envioDeFormulario(e) {
     e.preventDefault();
-    console.log(datos);
+    var val1 = validarNombre(datos.nombre);
+    var val2 = validarCorreo(datos.correo);
+    var val3 = validarContrasenia(datos.contrasenia, datos.contrasenia1);
+    if (val1 && val2 && val2 && val3) {
+      console.log("Datos validados.");
+    }
   }
   function entradaCambio(e) {
     e.persist();
@@ -52,6 +93,7 @@ export default function RegistroDeUsuario() {
                   className="w-100"
                   name="nombre"
                 />
+                <span className="alert">{nombreEr}</span>
               </div>
               <form onSubmit={envioDeFormulario}>
                 <div className="d-flex flex-row align-items-center mb-4">
@@ -63,6 +105,7 @@ export default function RegistroDeUsuario() {
                     type="email"
                     name="correo"
                   />
+                  <span className="alert">{correoEr}</span>
                 </div>
 
                 <div className="d-flex flex-row align-items-center mb-4">
@@ -74,6 +117,7 @@ export default function RegistroDeUsuario() {
                     type="password"
                     name="contrasenia"
                   />
+                  <span className="alert">{contraseniaEr}</span>
                 </div>
 
                 <div className="d-flex flex-row align-items-center mb-4">
@@ -85,6 +129,7 @@ export default function RegistroDeUsuario() {
                     type="password"
                     name="contrasenia1"
                   />
+                  <span className="alert">{contrasenia1Er}</span>
                 </div>
 
                 <div className="mb-4">
