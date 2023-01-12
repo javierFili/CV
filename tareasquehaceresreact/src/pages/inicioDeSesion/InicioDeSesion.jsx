@@ -63,7 +63,7 @@ export default function InicioDeSesion() {
                 />
 
                 <MDBBtn type="submit" className="mb-4 w-100" size="lg">
-                  Sign in
+                  Iniciar sesion
                 </MDBBtn>
               </form>
 

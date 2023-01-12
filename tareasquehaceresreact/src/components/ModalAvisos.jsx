@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 export default function ModalAvisos({ titulo, cuerpo, activo, funcion }) {
   const [show, setShow] = useState(activo);
 
-  const handleClose = () => setShow(false);  
+  const handleClose = () => setShow(false);
   return (
     <>
       <Modal
@@ -20,10 +20,10 @@ export default function ModalAvisos({ titulo, cuerpo, activo, funcion }) {
         <Modal.Body>{cuerpo}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cerrar
           </Button>
           <Button variant="primary" onClick={funcion}>
-            Understood
+            Aceptar
           </Button>
         </Modal.Footer>
       </Modal>
