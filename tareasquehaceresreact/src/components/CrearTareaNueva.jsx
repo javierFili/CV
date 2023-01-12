@@ -11,9 +11,10 @@ export default function CrearTareaNueva({ datosDeTareas }) {
   });
 
   function envioDeFormulario(e) {
+    const sesion = localStorage.getItem("usuario");
     e.preventDefault();
     // aqui rescatamos el id.
-    const URL = "http://localhost:3001/tareas/javier2";
+    const URL = "http://localhost:3001/tareas/" + sesion;
     var nuevaActualizacion = datosDeTareas[0].tareas;
     nuevaActualizacion.push(nuevaTarea);
     var sera = datosDeTareas[0];
@@ -106,9 +107,7 @@ export default function CrearTareaNueva({ datosDeTareas }) {
 
               <div class="mb-3 row">
                 <div class="offset-sm-3 col-sm-9">
-                  <button    class="btn btn-primary boton">
-                    Confirmar
-                  </button>
+                  <button class="btn btn-primary boton">Confirmar</button>
                   <button
                     onclick=""
                     type="button"

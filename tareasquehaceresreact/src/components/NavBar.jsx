@@ -4,9 +4,10 @@ import CrearTareaNueva from "../components/CrearTareaNueva";
 import { AiFillShopping } from "react-icons/ai";
 
 export default function NavBar({ datosDeTareas }) {
-  let id = localStorage.getItem("usId");
+  let id = localStorage.getItem("usuario");
   function salirDeLaSesion() {
-    alert("se salbra de la sesion");
+    localStorage.removeItem("usuario");
+    window.location.href("/");
   }
 
   if (id === null) {
@@ -27,8 +28,7 @@ export default function NavBar({ datosDeTareas }) {
             </button>
           </div>
         </div>
-        <div>          
-        </div>
+        <div></div>
       </div>
     );
   } else {
@@ -45,7 +45,9 @@ export default function NavBar({ datosDeTareas }) {
             </h1>
           </div>
           <div className="col-3">
-            <button className="btn btn-primary">salir</button>
+            <button onClick={salirDeLaSesion} className="btn btn-primary">
+              salir
+            </button>
             <AiFillShopping />
           </div>
         </div>

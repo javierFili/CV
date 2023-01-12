@@ -5,6 +5,8 @@ Cosas del frontend
   1:Validar formularios.
   2:Cambiar colores a los cards.
 
-  
+
   4: Implementar el inicio de sesion.
+  5: falta la validacion de que usuario no exista en el bd;
+
   
