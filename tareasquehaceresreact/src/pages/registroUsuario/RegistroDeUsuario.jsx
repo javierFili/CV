@@ -10,7 +10,7 @@ import {
   MDBInput,
   MDBIcon,
 } from "mdb-react-ui-kit";
-
+import "../../styles/registroUsuario.css";
 export default function RegistroDeUsuario() {
   const [datos, setDatos] = useState({
     nombre: "",
@@ -29,6 +29,8 @@ export default function RegistroDeUsuario() {
       setNombreEr("No puede ser vacio!");
       return false;
     }
+    setNombreEr("");
+    return true;
   }
 
   function validarCorreo(correo) {
@@ -37,6 +39,8 @@ export default function RegistroDeUsuario() {
       setCorreoEr("No puede ser vacio!");
       return false;
     }
+    setContraseniaEr("");
+    return true;
   }
   function validarContrasenia(contrasenia, contrasenia1) {
     contrasenia = contrasenia.trim();
@@ -53,6 +57,9 @@ export default function RegistroDeUsuario() {
       setContraseniaEr("debe tener almenos 8 caracteres.");
       return false;
     }
+    setContrasenia1Er("");
+    setContraseniaEr("");
+    return true;
   }
 
   function envioDeFormulario(e) {
@@ -61,12 +68,38 @@ export default function RegistroDeUsuario() {
     var val2 = validarCorreo(datos.correo);
     var val3 = validarContrasenia(datos.contrasenia, datos.contrasenia1);
     if (val1 && val2 && val2 && val3) {
-      console.log("Datos validados.");
+      registrarUsuario(datos.correo, datos.nombre, datos.contrasenia);
     }
   }
+
   function entradaCambio(e) {
     e.persist();
     setDatos({ ...datos, [e.target.name]: e.target.value });
+  }
+
+  function registrarUsuario(correo, usuario, clave) {
+    var nuevoUsuario = {
+      _id: usuario,
+      clave: clave,
+      correo: correo,
+      tareas: [
+        {
+          titulo: "Ingresa el titulo de su tarea",
+          descripcion: "Realizar las tareas y las descripciones que desee aqui",
+          fechaIni: "22/07/22",
+          fechaFin: "22/10/22",
+        },
+      ],
+    };
+    let db = "http://localhost:3001/tareas";
+    let req = new Request(db, {
+      method: "POST",
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify(nuevoUsuario),
+    });
+    fetch(req).then((res) => res.json());
   }
 
   return (
@@ -87,13 +120,14 @@ export default function RegistroDeUsuario() {
                 <MDBIcon fas icon="user me-3" size="lg" />
                 <MDBInput
                   onChange={entradaCambio}
-                  label="Tu nombre completo"
+                  label="Nombre de usuario"
                   id="form1"
                   type="text"
                   className="w-100"
                   name="nombre"
-                />
-                <span className="alert">{nombreEr}</span>
+                >
+                  <span className="text-danger">{nombreEr}</span>
+                </MDBInput>
               </div>
               <form onSubmit={envioDeFormulario}>
                 <div className="d-flex flex-row align-items-center mb-4">
@@ -104,8 +138,9 @@ export default function RegistroDeUsuario() {
                     id="form2"
                     type="email"
                     name="correo"
-                  />
-                  <span className="alert">{correoEr}</span>
+                  >
+                    <span className="text-danger">{correoEr}</span>
+                  </MDBInput>
                 </div>
 
                 <div className="d-flex flex-row align-items-center mb-4">
@@ -116,8 +151,9 @@ export default function RegistroDeUsuario() {
                     id="form3"
                     type="password"
                     name="contrasenia"
-                  />
-                  <span className="alert">{contraseniaEr}</span>
+                  >
+                    <span className="text-danger">{contraseniaEr}</span>
+                  </MDBInput>
                 </div>
 
                 <div className="d-flex flex-row align-items-center mb-4">
@@ -128,8 +164,9 @@ export default function RegistroDeUsuario() {
                     id="form4"
                     type="password"
                     name="contrasenia1"
-                  />
-                  <span className="alert">{contrasenia1Er}</span>
+                  >
+                    <span className="text-danger">{contrasenia1Er}</span>
+                  </MDBInput>
                 </div>
 
                 <div className="mb-4">
