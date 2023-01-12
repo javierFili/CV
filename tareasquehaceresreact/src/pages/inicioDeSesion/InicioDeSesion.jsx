@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MDBContainer,
   MDBCol,
@@ -9,6 +9,7 @@ import {
   MDBCard,
   MDBCardBody,
 } from "mdb-react-ui-kit";
+import axios from "axios";
 import "../../styles/inicioDeSesion.css";
 
 export default function InicioDeSesion() {
@@ -16,9 +17,43 @@ export default function InicioDeSesion() {
     correo: "",
     contrasenia: "",
   });
+  const [datosUsuarios, setDatosUsuarios] = useState(null);
+  const [mensajeError, setMensajeError] = useState("");
+  const URL = `http://localhost:3001/tareas`;
+  useEffect(() => {
+    const controller = new AbortController();
+    axios
+      .get(URL, {
+        signal: controller.signal,
+      })
+      .then((response) => {
+        setDatosUsuarios(response.data);
+        console.log(response.data);
+      })
+      .catch(console.log("error"));
+    return () => {
+      controller.abort();
+    };
+  }, [URL]);
+
+  function inicioDeSesion(usuario, clave) {
+    localStorage.setItem("usuario", usuario);
+    window.location.href = "/vistaprincipal";
+  }
+  function validarClaveUsuario(usuario, clave) {
+    var us = datosUsuarios.filter((tareas) => tareas._id === usuario);
+    if (us.length > 0) {
+      if (us[0].clave === clave) {
+        inicioDeSesion(usuario, clave);
+      }
+    } else {
+      setMensajeError("El usuario o contrasenia no existen");
+    }
+  }
+
   function envioDeFormulario(e) {
     e.preventDefault();
-    console.log(datos);
+    validarClaveUsuario(datos.correo, datos.contrasenia);
   }
   function entradaCambio(e) {
     e.persist();
@@ -48,7 +83,6 @@ export default function InicioDeSesion() {
                   wrapperClass="mb-4"
                   label="Email address"
                   id="formControlLg"
-                  type="email"
                   size="lg"
                   name="correo"
                 />
@@ -60,7 +94,9 @@ export default function InicioDeSesion() {
                   type="password"
                   size="lg"
                   name="contrasenia"
-                />
+                >
+                  <span className="text-danger">{mensajeError}</span>
+                </MDBInput>
 
                 <MDBBtn type="submit" className="mb-4 w-100" size="lg">
                   Iniciar sesion

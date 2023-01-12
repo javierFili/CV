@@ -9,4 +9,4 @@ Cosas del frontend
   4: Implementar el inicio de sesion.
   5: falta la validacion de que usuario no exista en el bd;
 
-  
+  6: falta arreglar el navBar

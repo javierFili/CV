@@ -113,7 +113,7 @@ export default function RegistroDeUsuario() {
 
   function terminarRegistro() {
     localStorage.setItem("usuario", datos.nombre);
-    window.location.href("/vistaprincipal");
+    window.location.href="/vistaprincipal";
   }
 
   return (

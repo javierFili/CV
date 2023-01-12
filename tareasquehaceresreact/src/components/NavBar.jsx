@@ -1,16 +1,14 @@
 import "../styles/navbar.css";
 import CrearTareaNueva from "../components/CrearTareaNueva";
 
-import { AiFillShopping } from "react-icons/ai";
-
 export default function NavBar({ datosDeTareas }) {
   let id = localStorage.getItem("usuario");
   function salirDeLaSesion() {
     localStorage.removeItem("usuario");
-    window.location.href("/");
+    window.location.href = "/";
   }
 
-  if (id === null) {
+  if (id !== null) {
     return (
       <div className="main">
         <div className="row navbar centrarElementosNavbar ">
@@ -34,21 +32,16 @@ export default function NavBar({ datosDeTareas }) {
   } else {
     return (
       <div className="main">
-        <div className="row navbar centrarElementosNavbar ">
-          <div className="col-3">
-            <AiFillShopping />
-            <button className="btn btn-primary ">Crear tarea </button>
-          </div>
-          <div className="col-6">
+        <div className="row navbar ">
+          <div className="col-5" style={{ marginLeft: "20em" }}>
             <h1>
               <b>TAREAS Y QUE HACERES</b>
             </h1>
           </div>
-          <div className="col-3">
-            <button onClick={salirDeLaSesion} className="btn btn-primary">
-              salir
+          <div className="col-2" style={{ marginLeft: "1em" }}>
+            <button onClick={salirDeLaSesion} className="btn-15">
+              <span>iniciar sesion</span>
             </button>
-            <AiFillShopping />
           </div>
         </div>
       </div>
