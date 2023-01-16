@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   MDBBtn,
   MDBContainer,
@@ -26,6 +27,23 @@ export default function RegistroDeUsuario() {
   const [modalCuerpo, setModalCuerpo] = useState("");
   const [modalTitulo, setModalTitulo] = useState("");
   const [mostracionModal, setMostracionModal] = useState(false);
+  const [datosUsuarios, setDatosUsuarios] = useState(null);
+  const URL = `http://localhost:3001/tareas`;
+  useEffect(() => {
+    const controller = new AbortController();
+    axios
+      .get(URL, {
+        signal: controller.signal,
+      })
+      .then((response) => {
+        setDatosUsuarios(response.data);
+        console.log(response.data);
+      })
+      .catch(console.log("error"));
+    return () => {
+      controller.abort();
+    };
+  }, [URL]);
 
   function validarNombre(nombre) {
     nombre = nombre.trim();
@@ -33,6 +51,13 @@ export default function RegistroDeUsuario() {
       setNombreEr("No puede ser vacio!");
       return false;
     }
+
+    var us = datosUsuarios.filter((tareas) => tareas._id === nombre);
+    if (us.length >= 1) {
+      setNombreEr("Ese nombre de usuario ya existe");
+      return false;
+    }
+
     setNombreEr("");
     return true;
   }
@@ -41,6 +66,11 @@ export default function RegistroDeUsuario() {
     correo = correo.trim();
     if (correo.length === 0) {
       setCorreoEr("No puede ser vacio!");
+      return false;
+    }
+    var us = datosUsuarios.filter((tareas) => tareas.correo === correo);
+    if (us.length >= 1) {
+      setCorreoEr("Este correo ya esta siendo usado");
       return false;
     }
     setContraseniaEr("");
@@ -57,7 +87,7 @@ export default function RegistroDeUsuario() {
       setContrasenia1Er("No puede ser vacia");
       return false;
     }
-    if (contrasenia.length > 7) {
+    if (contrasenia.length < 7) {
       setContraseniaEr("debe tener almenos 8 caracteres.");
       return false;
     }
@@ -68,12 +98,12 @@ export default function RegistroDeUsuario() {
 
   function envioDeFormulario(e) {
     e.preventDefault();
-    setMostracionModal(true);
     var val1 = validarNombre(datos.nombre);
     var val2 = validarCorreo(datos.correo);
     var val3 = validarContrasenia(datos.contrasenia, datos.contrasenia1);
     if (val1 && val2 && val2 && val3) {
       registrarUsuario(datos.correo, datos.nombre, datos.contrasenia);
+      setMostracionModal(true);
     }
   }
 
@@ -113,7 +143,7 @@ export default function RegistroDeUsuario() {
 
   function terminarRegistro() {
     localStorage.setItem("usuario", datos.nombre);
-    window.location.href="/vistaprincipal";
+    window.location.href = "/vistaprincipal";
   }
 
   return (

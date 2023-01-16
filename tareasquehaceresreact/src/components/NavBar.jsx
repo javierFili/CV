@@ -7,6 +7,9 @@ export default function NavBar({ datosDeTareas }) {
     localStorage.removeItem("usuario");
     window.location.href = "/";
   }
+  function iniciarSesion() {
+    window.location.href = "/inicioDeSesion";
+  }
 
   if (id !== null) {
     return (
@@ -39,7 +42,7 @@ export default function NavBar({ datosDeTareas }) {
             </h1>
           </div>
           <div className="col-2" style={{ marginLeft: "1em" }}>
-            <button onClick={salirDeLaSesion} className="btn-15">
+            <button onClick={iniciarSesion} className="btn-15">
               <span>iniciar sesion</span>
             </button>
           </div>
